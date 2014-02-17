@@ -25,6 +25,7 @@ void swiftFacade::parseOptions(int argc, char* argv[]) {
 		("afgname,a", po::value<string>()->default_value(""), "Name of waveform as stored on afg")
 		("freqwave", po::value<string>()->default_value(""), "Name of output file for the initial frequency waveform")
 		("twave", po::value<string>()->default_value(""), "Name of output file for the swift time-domain waveform")
+		("twavewindowed", po::value<string>()->default_value(""), "Name of output file for the windowed swift time-domain waveform")
 		("ifreqwave", po::value<string>()->default_value(""), "Name of output file for the zero-filled FFT waveform")
 		;
 	po::variables_map vm;
@@ -91,6 +92,8 @@ void swiftFacade::parseOptions(int argc, char* argv[]) {
 
 	// Set time-domain wavefrom output filename
 	setTimeWaveformFile(vm["twave"].as<string>());
+
+	setWindowedTimeWaveformFile(vm["twavewindowed"].as<string>());
 
 	// Set zero-filled waveform output filename
 	setZeroFillWaveformFile(vm["ifreqwave"].as<string>());
@@ -239,6 +242,13 @@ void swiftFacade::setWindowedTimeWaveformFile(string filename) {
 	} else {
 		WindTimeWF.open(filename, ofstream::trunc);
 	};
+};
+
+void swiftFacade::doWriteWindowedTimeWaveform() {
+	if(WindTimeWF) {
+		cout << "\t>>> Writing windowed time-domain waveform" << endl;
+		waveform->printData(WindTimeWF);
+	}
 };
 
 void swiftFacade::setZeroFillWaveformFile(string filename) {

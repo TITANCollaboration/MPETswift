@@ -53,6 +53,7 @@ class swiftFacade {
 
 		void doWriteOriginalFreqWaveform();
 		void doWriteSmoothedFreqWaveform();
+		void doWriteWindowedTimeWaveform();
 		void doWriteTimeWaveform();
 		void doWriteZeroFillWaveform();
 	

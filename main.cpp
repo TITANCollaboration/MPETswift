@@ -26,12 +26,13 @@ int main(int argc, char* argv[]) {
 
 	// Do IFFT, window the time-domain signal, and normalize
 	swift->doBackwardFFT();
+	swift->doWriteTimeWaveform();
 	swift->doWindowing();
 	swift->doWaveNormalization();
 	
 	// Write time-domain to the AFG
 	swift->doWriteAfg();
-	swift->doWriteTimeWaveform();
+	swift->doWriteWindowedTimeWaveform();
 
 	// do FFT and write the waveform, only if the user wants it
 	swift->doForwardFFT();
