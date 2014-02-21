@@ -61,7 +61,7 @@ class swiftFacade {
 		unique_ptr<buildFreq> makeFreq;
 		unique_ptr<phaseStrategy> phaseModulation;
 		unique_ptr<ISmoothing> smooth;
-		unique_ptr<IWindowing> window;
+		/* unique_ptr<IWindowing> window; */
 		unique_ptr<IFFT> FFT;
 		unique_ptr<afgWriteWave> afg;
 

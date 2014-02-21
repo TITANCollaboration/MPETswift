@@ -4,9 +4,12 @@
 #include <vector>
 #include <complex.h>
 #include <ostream>
+#include <string>
+#include <memory>
 
 /* #include "phaseStrategy.h" */
 /* #include "randomPhase.h" */
+#include "windowingFactory.h"
 
 using namespace std;
 
@@ -33,10 +36,15 @@ class WAVE {
 
 		void normalizeWaveform();
 
+		void setWindow(string window);
+		void doWindowing();
+
 		vector<complex<double> > data;
 		vector<double> _fstart, _fend;
 		double tExcite, tWaveform;
 		double deltaFreq;
+
+		unique_ptr<IWindowing> window;
 
 	private:
 		int N;

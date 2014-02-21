@@ -1,7 +1,7 @@
 CC = g++
-INCLUDE = -I./include 
+INCLUDE = -I./include -I/Users/agallant/Packages/boost_1_55_0/include
 CFLAGS = -O2 -Wall -std=gnu++0x
-LIBS = -lfftw3 -lm -lboost_system -lboost_program_options -lgsl -lgslcblas
+LIBS = -lfftw3 -lm -lgsl -lgslcblas /Users/agallant/Packages/boost_1_55_0/lib/libboost_system.a /Users/agallant/Packages/boost_1_55_0/lib/libboost_program_options.a 
 SOURCES := $(wildcard src/*.cpp) main.cpp
 OBJ_DIR = obj/
 OBJ_FILES = $(addprefix $(OBJ_DIR),$(notdir $(SOURCES:.cpp=.o)))

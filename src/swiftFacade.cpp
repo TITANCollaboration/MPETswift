@@ -154,13 +154,14 @@ void swiftFacade::setSmoothing(string smoothing) {
 };
 
 void swiftFacade::setWindowing(string windowing) {
-	try {
-		window = windowingFactory::make_window(windowing);
-	} catch(...) {
-		cerr << "Unknown windowing function " << windowing << "." << endl;
-		cerr << "Aborting calculation." << endl;
-		exit(1);
-	}
+	/* try { */
+	/* 	window = windowingFactory::make_window(windowing); */
+	/* } catch(...) { */
+	/* 	cerr << "Unknown windowing function " << windowing << "." << endl; */
+	/* 	cerr << "Aborting calculation." << endl; */
+	/* 	exit(1); */
+	/* } */
+	waveform->setWindow(windowing);
 };
 
 void swiftFacade::setFFT(string fft) {
@@ -286,7 +287,9 @@ void swiftFacade::doBackwardFFT() {
 };
 
 void swiftFacade::doWindowing() {
-	window->applyWindow(waveform.get());
+	/* window->applyWindow(waveform.get()); */
+	/* window->applyWindow(waveform->data); */
+	waveform->doWindowing();
 };
 
 void swiftFacade::doForwardFFT() {

@@ -1,6 +1,7 @@
 #include "wave.h"
 
 #include <math.h>
+#include <iostream>
 
 using namespace std;
 
@@ -52,4 +53,18 @@ void WAVE::normalizeWaveform() {
 	for(int i = 0; i < getN(); i++) {
 		data[i] /= max;
 	}
+};
+
+void WAVE::setWindow(string windowing) {
+	try {
+		window = windowingFactory::make_window(windowing);
+	} catch(...) {
+		cerr << "Unknown windowing function " << windowing << "." << endl;
+		cerr << "Aborting calculation." << endl;
+		exit(1);
+	}
+};
+
+void WAVE::doWindowing() {
+	window->applyWindow(data);
 };

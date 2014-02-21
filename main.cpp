@@ -28,11 +28,11 @@ int main(int argc, char* argv[]) {
 	swift->doBackwardFFT();
 	swift->doWriteTimeWaveform();
 	swift->doWindowing();
+	swift->doWriteWindowedTimeWaveform();
 	swift->doWaveNormalization();
 	
 	// Write time-domain to the AFG
 	swift->doWriteAfg();
-	swift->doWriteWindowedTimeWaveform();
 
 	// do FFT and write the waveform, only if the user wants it
 	swift->doForwardFFT();
